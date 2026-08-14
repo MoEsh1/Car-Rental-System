@@ -10,7 +10,7 @@ using System.Windows.Input;
 
 namespace DataAccess
 {
-    internal class clsPersonData
+    public class clsPersonData
     {
         /****************************************************************************************************************************************/
         public static bool GetPersonInfoByID(int PersonID, ref string NationalNo, ref string FirstName, ref string LastName,

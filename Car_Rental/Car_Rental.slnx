@@ -1,5 +1,5 @@
 <Solution>
-  <Project Path="../Car_Rental_BuisnessLayer/Car_Rental_BuisnessLayer.csproj" />
-  <Project Path="../Car_Rental_DataAccess/Car_Rental_DataAccess.csproj" />
-  <Project Path="Car_Rental.csproj" />
+  <Project Path="../Car_Rental_BuisnessLayer/Car_Rental_BuisnessLayer.csproj" Id="117c207a-7137-477c-a76d-b2362e04b8d1" />
+  <Project Path="../Car_Rental_DataAccess/Car_Rental_DataAccess.csproj" Id="30fc800a-4754-4b8d-b6f1-8dd202a9b5e3" />
+  <Project Path="Car_Rental.csproj" Id="9971dcb9-c7b7-49ef-8e60-0c6cad992898" />
 </Solution>
