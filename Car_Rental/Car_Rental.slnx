@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="../Car_Rental_BuisnessLayer/Car_Rental_BuisnessLayer.csproj" />
+  <Project Path="../Car_Rental_DataAccess/Car_Rental_DataAccess.csproj" />
+  <Project Path="Car_Rental.csproj" />
+</Solution>
