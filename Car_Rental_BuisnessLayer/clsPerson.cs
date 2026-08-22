@@ -23,7 +23,7 @@ namespace BuisnessLayer
         public string Phone { get; set; }
         public string Email { get; set; }
         public int CountryID { get; set; }
-        public clsCountryData CountryInfo { get; set; }
+        public clsCountry CountryInfo { get; set; }
 
         /****************************************************************************************************************************************/
         public clsPerson()

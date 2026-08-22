@@ -210,7 +210,7 @@ namespace DataAccess
 
             SqlCommand command = new SqlCommand(query, connection);
             command.Parameters.AddWithValue("@PersonID", PersonID);
-            command.Parameters.AddWithValue("@NationaNo", NationalNo);
+            command.Parameters.AddWithValue("@NationalNo", NationalNo);
             command.Parameters.AddWithValue("@FirstName", FirstName);
             command.Parameters.AddWithValue("@LastName", LastName);
             command.Parameters.AddWithValue("@DateOfBirth", DateOfBirth);
