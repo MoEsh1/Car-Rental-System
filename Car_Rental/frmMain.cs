@@ -1,4 +1,5 @@
 ﻿using Car_Rental.Global_Classes;
+using Car_Rental.Login;
 using Car_Rental.People;
 using Car_Rental.Users;
 using System;
@@ -16,7 +17,9 @@ namespace Car_Rental
 {
     public partial class frmMain : Form
     {
-        public frmMain()
+        frmLogin _frmLogin;
+
+        public frmMain(frmLogin frm)
         {
             InitializeComponent();
 
@@ -24,7 +27,7 @@ namespace Car_Rental
             Color darkerOldLace = Color.FromArgb(240, 230, 210);
 
             clsUtil.SetTitleBarColor(this, darkerOldLace);
-
+            _frmLogin = frm;
         }
 
         private void peopleToolStripMenuItem_Click(object sender, EventArgs e)
@@ -52,11 +55,15 @@ namespace Car_Rental
         }
 
         private void signOutToolStripMenuItem_Click(object sender, EventArgs e)
-        {/*
+        {
             clsGlobal.CurrentUser = null;
             _frmLogin.Show();
-            this.Close();*/
-            MessageBox.Show("To be implmented");
+            this.Close();
+        }
+
+        private void frmMain_Load(object sender, EventArgs e)
+        {
+            this.Refresh();
         }
     }
 }
