@@ -297,6 +297,7 @@
             // 
             // btnClose
             // 
+            this.btnClose.CausesValidation = false;
             this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnClose.Image = global::Car_Rental.Properties.Resources.Close_32;
@@ -488,7 +489,7 @@
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
             this.lblTitle.Location = new System.Drawing.Point(3, 9);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(928, 39);
+            this.lblTitle.Size = new System.Drawing.Size(744, 39);
             this.lblTitle.TabIndex = 115;
             this.lblTitle.Text = "Add New Person";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;

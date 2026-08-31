@@ -1,7 +1,9 @@
-﻿using Car_Rental.Global_Classes;
+﻿using Car_Rental.Customers;
+using Car_Rental.Global_Classes;
 using Car_Rental.Login;
 using Car_Rental.People;
 using Car_Rental.Users;
+using Car_Rental.Vehicles;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -64,6 +66,18 @@ namespace Car_Rental
         private void frmMain_Load(object sender, EventArgs e)
         {
             this.Refresh();
+        }
+
+        private void customersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListCustomers frm = new frmListCustomers();
+            frm.ShowDialog();
+        }
+
+        private void vehiclesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListVehicles frm = new frmListVehicles();
+            frm.ShowDialog();
         }
     }
 }

@@ -197,7 +197,7 @@ namespace Car_Rental.People
         {
             this.Close();
         }
-
+        /****************************************************************************************************************************************/
         private void ValidateEmptyTextBox(object sender, CancelEventArgs e)
         {
             // First: set AutoValidate property of your Form to EnableAllowFocusChange in designer 

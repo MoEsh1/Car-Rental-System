@@ -46,6 +46,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Customers\Controls\ctrlCustomerCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customers\Controls\ctrlCustomerCard.Designer.cs">
+      <DependentUpon>ctrlCustomerCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\frmListCustomers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Customers\frmListCustomers.Designer.cs">
+      <DependentUpon>frmListCustomers.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMain.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +141,48 @@
     <Compile Include="Users\frmUserInfo.Designer.cs">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Vehicles\Controls\ctrlVehicleCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vehicles\Controls\ctrlVehicleCard.Designer.cs">
+      <DependentUpon>ctrlVehicleCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vehicles\Controls\ctrlVehicleCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Vehicles\Controls\ctrlVehicleCardWithFilter.Designer.cs">
+      <DependentUpon>ctrlVehicleCardWithFilter.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vehicles\frmShowVehicleInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vehicles\frmShowVehicleInfo.Designer.cs">
+      <DependentUpon>frmShowVehicleInfo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vehicles\frmAddUpdateVehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vehicles\frmAddUpdateVehicle.Designer.cs">
+      <DependentUpon>frmAddUpdateVehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vehicles\frmFindVehicle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vehicles\frmFindVehicle.Designer.cs">
+      <DependentUpon>frmFindVehicle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vehicles\frmListVehicles.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vehicles\frmListVehicles.Designer.cs">
+      <DependentUpon>frmListVehicles.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Customers\Controls\ctrlCustomerCard.resx">
+      <DependentUpon>ctrlCustomerCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customers\frmListCustomers.resx">
+      <DependentUpon>frmListCustomers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmMain.resx">
       <DependentUpon>frmMain.cs</DependentUpon>
     </EmbeddedResource>
@@ -177,6 +231,24 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Users\frmUserInfo.resx">
       <DependentUpon>frmUserInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vehicles\Controls\ctrlVehicleCard.resx">
+      <DependentUpon>ctrlVehicleCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vehicles\Controls\ctrlVehicleCardWithFilter.resx">
+      <DependentUpon>ctrlVehicleCardWithFilter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vehicles\frmShowVehicleInfo.resx">
+      <DependentUpon>frmShowVehicleInfo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vehicles\frmAddUpdateVehicle.resx">
+      <DependentUpon>frmAddUpdateVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vehicles\frmFindVehicle.resx">
+      <DependentUpon>frmFindVehicle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vehicles\frmListVehicles.resx">
+      <DependentUpon>frmListVehicles.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
