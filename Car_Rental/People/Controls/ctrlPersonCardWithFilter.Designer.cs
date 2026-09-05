@@ -82,6 +82,7 @@
             // cbFilterBy
             // 
             this.cbFilterBy.BackColor = System.Drawing.Color.OldLace;
+            this.cbFilterBy.CausesValidation = false;
             this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterBy.FormattingEnabled = true;
             this.cbFilterBy.Items.AddRange(new object[] {

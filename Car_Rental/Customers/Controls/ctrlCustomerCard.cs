@@ -16,9 +16,9 @@ namespace Car_Rental.Controls
 
         private clsCustomer _Customer;
         private int _CustomerID = -1;
-        public int CustomerID 
-        { 
-            get { return -CustomerID; }  
+        public int CustomerID
+        {
+            get { return _CustomerID; }
         }
 
         public ctrlCustomerCard()

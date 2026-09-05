@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Car_Rental.Global_Classes;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -20,6 +21,12 @@ namespace Car_Rental.Users
             InitializeComponent();
 
             _UserID = UserID;
+
+            // Set the title bar color 
+            Color darkerOldLace = Color.FromArgb(240, 230, 210);
+
+            clsUtil.SetTitleBarColor(this, darkerOldLace);
+
 
         }
 

@@ -372,7 +372,7 @@
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.Label lblTitle;
         private People.ctrlPersonCardWithFilter ctrlPersonCardWithFilter1;
+        private System.Windows.Forms.Label lblTitle;
     }
 }

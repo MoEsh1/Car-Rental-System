@@ -108,13 +108,10 @@ namespace Car_Rental.Customers
 
         private void showDetailsToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*
-            frmUserInfo Frm1 = new frmUserInfo((int)dgvUsers.CurrentRow.Cells[0].Value);
+            
+            frmCustomerInfo Frm1 = new frmCustomerInfo((int)dgvCustomers.CurrentRow.Cells[0].Value);
             Frm1.ShowDialog();
              
-             */
-            MessageBox.Show("to be implemented");
-
         }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
@@ -124,12 +121,12 @@ namespace Car_Rental.Customers
 
         private void editToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*
-            frmAddUpdateUser Frm1 = new frmAddUpdateUser((int)dgvUsers.CurrentRow.Cells[0].Value);
+
+            frmAddUpdateCustomer Frm1 = new frmAddUpdateCustomer((int)dgvCustomers.CurrentRow.Cells[0].Value);
             Frm1.ShowDialog();
-            frmListUsers_Load(null, null);
-             */
-            MessageBox.Show("to be implemented");
+            frmListCustomers_Load(null, null);
+            
+            
 
         }
 
@@ -141,20 +138,18 @@ namespace Car_Rental.Customers
 
         private void btnAddCustomer_Click(object sender, EventArgs e)
         {
-            //frmAddUpdatCustomer Frm = new frmAddUpdatCustomer();
-            //Frm.ShowDialog();
-            //frmListCustomers_Load(null, null);
-            MessageBox.Show("to be implemented");
+            frmAddUpdateCustomer Frm = new frmAddUpdateCustomer();
+            Frm.ShowDialog();
+            frmListCustomers_Load(null, null);
+
         }
 
         private void dgvCustomers_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            /*
-            frmUserInfo Frm1 = new frmUserInfo((int)dgvUsers.CurrentRow.Cells[0].Value);
-            Frm1.ShowDialog();
-             */
-            MessageBox.Show("to be implemented");
 
+            frmCustomerInfo Frm1 = new frmCustomerInfo((int)dgvCustomers.CurrentRow.Cells[0].Value);
+            Frm1.ShowDialog();
+            
         }
 
         private void deleteToolStripMenuItem_Click(object sender, EventArgs e)
