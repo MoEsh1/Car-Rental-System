@@ -41,10 +41,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="clsBookingData.cs" />
     <Compile Include="clsCountryData.cs" />
     <Compile Include="clsCustomerData.cs" />
     <Compile Include="clsDataAccessSettings.cs" />
     <Compile Include="clsPersonData.cs" />
+    <Compile Include="clsReturnData.cs" />
     <Compile Include="clsUserData.cs" />
     <Compile Include="clsVehicleData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

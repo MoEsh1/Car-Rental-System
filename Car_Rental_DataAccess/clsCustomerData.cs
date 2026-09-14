@@ -8,14 +8,6 @@ using System.Threading.Tasks;
 
 namespace DataAccess
 {
-    /*
-      CustomerID 
-       PersonID 
-       DriverLicenseNo 
-  
-    Customers
-
-     */
     public class clsCustomerData
     {
 

@@ -19,6 +19,14 @@ namespace Car_Rental.Customers
         private int _CustomerID = -1;
         clsCustomer _Customer;
 
+
+        //Declare a delegate
+        public delegate void DataBackEventHandler(object sender, int CustomerID);
+
+        // Declare an event using the delegate
+        public event DataBackEventHandler DataBack;
+
+
         public frmAddUpdateCustomer()
         {
             InitializeComponent();
@@ -120,6 +128,8 @@ namespace Car_Rental.Customers
                 this.Text = "Update Customer";
 
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Trigger the event to send data back to the caller form.
+                DataBack?.Invoke(this, _Customer.CustomerID);
             }
             else
                 MessageBox.Show("Error: Data Is not Saved Successfully.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);

@@ -6,7 +6,7 @@ using System.Text.RegularExpressions;
 
 namespace Car_Rental.Classes
 {
-    public class clsValidatoin
+    public class clsValidation
     {
         /***********************************************************************************************/
         public static bool ValidateEmail(string emailAddress)

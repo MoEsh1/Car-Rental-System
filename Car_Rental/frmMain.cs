@@ -1,7 +1,9 @@
-﻿using Car_Rental.Customers;
+﻿using Car_Rental.Bookings;
+using Car_Rental.Customers;
 using Car_Rental.Global_Classes;
 using Car_Rental.Login;
 using Car_Rental.People;
+using Car_Rental.Returns;
 using Car_Rental.Users;
 using Car_Rental.Vehicles;
 using System;
@@ -77,6 +79,18 @@ namespace Car_Rental
         private void vehiclesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmListVehicles frm = new frmListVehicles();
+            frm.ShowDialog();
+        }
+
+        private void bookingsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListBookings frm  = new frmListBookings();
+            frm.ShowDialog();
+        }
+
+        private void returnsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListReturns frm = new frmListReturns();
             frm.ShowDialog();
         }
     }

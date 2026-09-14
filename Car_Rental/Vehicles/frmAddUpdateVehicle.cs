@@ -134,7 +134,7 @@ namespace Car_Rental.Vehicles
             _Vehicle.Year = dtpYear.Value.Year;
             _Vehicle.Mileage = Convert.ToInt32(txtMileage.Text.Trim());
             _Vehicle.DailyRate = Convert.ToDecimal(txtDailyRate.Text.Trim());
-            _Vehicle.DailyRate = clsValidatoin.MyStrToDecimalDef(txtDailyRate.Text.Trim(),0m);
+            _Vehicle.DailyRate = clsValidation.MyStrToDecimalDef(txtDailyRate.Text.Trim(),0m);
             _Vehicle.IsAvailable = chkAvailable.Checked;
 
 
@@ -189,7 +189,7 @@ namespace Car_Rental.Vehicles
             
 
 
-            if (!clsValidatoin.IsNumber(txtMileage.Text))
+            if (!clsValidation.IsNumber(txtMileage.Text))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtMileage, "Invalid Number.");
@@ -216,7 +216,7 @@ namespace Car_Rental.Vehicles
 
             }
             
-            if (!clsValidatoin.IsNumber(txtDailyRate.Text))
+            if (!clsValidation.IsNumber(txtDailyRate.Text))
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtDailyRate, "Invalid Number.");

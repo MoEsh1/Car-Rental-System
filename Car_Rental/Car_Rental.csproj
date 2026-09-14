@@ -33,7 +33,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System" />
+    <Reference Include="System">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.8\System.dll</HintPath>
+    </Reference>
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -46,11 +48,53 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Bookings\Controls\ctrlBookingCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Bookings\Controls\ctrlBookingCard.Designer.cs">
+      <DependentUpon>ctrlBookingCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bookings\frmAddUpdateBooking.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bookings\frmAddUpdateBooking.Designer.cs">
+      <DependentUpon>frmAddUpdateBooking.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Returns\Controls\ctrlReturnCard.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Returns\Controls\ctrlReturnCard.Designer.cs">
+      <DependentUpon>ctrlReturnCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Returns\frmAddUpdateReturn.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Returns\frmAddUpdateReturn.Designer.cs">
+      <DependentUpon>frmAddUpdateReturn.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bookings\frmListBookings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bookings\frmListBookings.Designer.cs">
+      <DependentUpon>frmListBookings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bookings\frmShowBookingInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bookings\frmShowBookingInfo.Designer.cs">
+      <DependentUpon>frmShowBookingInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Customers\Controls\ctrlCustomerCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Customers\Controls\ctrlCustomerCard.Designer.cs">
       <DependentUpon>ctrlCustomerCard.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Customers\Controls\ctrlCustomerCardWithFilter.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Customers\Controls\ctrlCustomerCardWithFilter.Designer.cs">
+      <DependentUpon>ctrlCustomerCardWithFilter.cs</DependentUpon>
     </Compile>
     <Compile Include="Customers\frmAddUpdateCustomer.cs">
       <SubType>Form</SubType>
@@ -77,7 +121,7 @@
       <DependentUpon>frmMain.cs</DependentUpon>
     </Compile>
     <Compile Include="Global Classes\clsGlobal.cs" />
-    <Compile Include="Global Classes\clsValidatoin.cs" />
+    <Compile Include="Global Classes\clsValidation.cs" />
     <Compile Include="Global Classes\util.cs" />
     <Compile Include="Login\frmLogin.cs">
       <SubType>Form</SubType>
@@ -123,6 +167,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Returns\frmListReturns.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Returns\frmListReturns.Designer.cs">
+      <DependentUpon>frmListReturns.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Returns\frmShowReturnInfo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Returns\frmShowReturnInfo.Designer.cs">
+      <DependentUpon>frmShowReturnInfo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Users\Controls\ctrlUserCard.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -189,8 +245,29 @@
     <Compile Include="Vehicles\frmListVehicles.Designer.cs">
       <DependentUpon>frmListVehicles.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Bookings\Controls\ctrlBookingCard.resx">
+      <DependentUpon>ctrlBookingCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bookings\frmAddUpdateBooking.resx">
+      <DependentUpon>frmAddUpdateBooking.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Returns\Controls\ctrlReturnCard.resx">
+      <DependentUpon>ctrlReturnCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Returns\frmAddUpdateReturn.resx">
+      <DependentUpon>frmAddUpdateReturn.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bookings\frmListBookings.resx">
+      <DependentUpon>frmListBookings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bookings\frmShowBookingInfo.resx">
+      <DependentUpon>frmShowBookingInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Customers\Controls\ctrlCustomerCard.resx">
       <DependentUpon>ctrlCustomerCard.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Customers\Controls\ctrlCustomerCardWithFilter.resx">
+      <DependentUpon>ctrlCustomerCardWithFilter.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Customers\frmAddUpdateCustomer.resx">
       <DependentUpon>frmAddUpdateCustomer.cs</DependentUpon>
@@ -235,6 +312,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Returns\frmListReturns.resx">
+      <DependentUpon>frmListReturns.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Returns\frmShowReturnInfo.resx">
+      <DependentUpon>frmShowReturnInfo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Users\Controls\ctrlUserCard.resx">
       <DependentUpon>ctrlUserCard.cs</DependentUpon>
     </EmbeddedResource>
@@ -620,6 +703,8 @@
   <ItemGroup>
     <None Include="Resources\Written Test 512.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\booking 48.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

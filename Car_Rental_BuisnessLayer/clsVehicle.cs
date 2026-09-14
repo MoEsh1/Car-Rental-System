@@ -127,6 +127,13 @@ namespace BuisnessLayer
         {
             return clsVehicleData.GetAllVehicles();
         }
+
+        /****************************************************************************************************************************************/
+        public static DataTable GetAllAvailableVehicles()
+        {
+            return clsVehicleData.GetAllAvailableVehicles();
+        }
+
         /****************************************************************************************************************************************/
         public static bool DeletVehicle(int VehicleID)
         {

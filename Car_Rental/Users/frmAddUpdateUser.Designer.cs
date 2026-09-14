@@ -314,7 +314,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(697, 39);
             this.lblTitle.TabIndex = 122;
-            this.lblTitle.Text = "Edit Application Type";
+            this.lblTitle.Text = "Add New User";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // frmAddUpdateUser

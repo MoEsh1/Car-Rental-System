@@ -234,7 +234,38 @@ namespace DataAccess
 
             return dt;
         }
+        /**************************************************************************************************************************/
+        public static DataTable GetAllAvailableVehicles()
+        {
+            DataTable dt = new DataTable();
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
 
+            string query = @"SELECT * From Vehicles Where IsAvailable = 1";
+
+            SqlCommand command = new SqlCommand(query, connection);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    dt.Load(reader);
+                }
+
+                reader.Close();
+            }
+
+            catch (Exception ex)
+            {
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return dt;
+        }
         /**************************************************************************************************************************/
         public static bool IsVehicleExist(int VehicleID)
         {
@@ -291,9 +322,40 @@ namespace DataAccess
 
             return isFound;
         }
+
+        /**************************************************************************************************************************/
+        public static bool IsVehicleAvailable(int VehicleID)
+        {
+            bool isFound = false;
+
+            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
+            string query = @"SELECT Found=1 FROM Vehicles WHERE VehicleID = @VehicleID  
+                                                                        AND IsAvailable = 1";
+            SqlCommand command = new SqlCommand(query, connection);
+            command.Parameters.AddWithValue("@VehicleID", VehicleID);
+            try
+            {
+                connection.Open();
+                SqlDataReader reader = command.ExecuteReader();
+                isFound = reader.HasRows;
+                reader.Close();
+            }
+            catch (Exception ex)
+            {
+                isFound = false;
+            }
+            finally
+            {
+                connection.Close();
+            }
+
+            return isFound;
+        }
+
         /**************************************************************************************************************************/
         //does Customer Has vehicle reserved implement it if needed that customer has only one vehcile to reserve at time
         //or maybe implement it at reservation section
-        
+
+
     }
 }

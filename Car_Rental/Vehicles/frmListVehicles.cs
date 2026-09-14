@@ -89,8 +89,7 @@ namespace Car_Rental.Vehicles
             Form frm = new frmAddUpdateVehicle((int)dgvVehicles.CurrentRow.Cells[0].Value);
             frm.ShowDialog();
 
-            _RefreshVehiclesList();
-
+            frmListVehicles_Load(null, null);
 
         }
 
@@ -104,7 +103,7 @@ namespace Car_Rental.Vehicles
                 if (clsVehicle.DeletVehicle((int)dgvVehicles.CurrentRow.Cells[0].Value))
                 {
                     MessageBox.Show("Vehicle Deleted Successfully.", "Successful", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    _RefreshVehiclesList();
+                    frmListVehicles_Load(null, null);
                 }
 
                 else
@@ -118,7 +117,7 @@ namespace Car_Rental.Vehicles
         {
             Form frm = new frmAddUpdateVehicle();
             frm.ShowDialog();
-            _RefreshVehiclesList();
+            frmListVehicles_Load(null, null);
 
         }
 
