@@ -10,106 +10,97 @@ namespace DataAccess
 {
     public class clsCountryData
     {
-        /****************************************************************************************************************************************/
         public static bool GetCountryInfoByID(int ID, ref string CountryName)
         {
             bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = "SELECT * FROM Countries WHERE CountryID = @CountryID";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@CountryID", ID);
+            string query = "SELECT CountryName FROM Countries WHERE CountryID = @CountryID";
+
             try
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-
-                if (reader.Read())
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    isFound = true;
-                    CountryName = (string)reader["CountryName"];
-                }
-                else
-                {
-                    isFound = false;
-                }
+                    command.Parameters.AddWithValue("@CountryID", ID);
 
-                reader.Close();
+                    connection.Open();
 
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            isFound = true;
+                            CountryName = (string)reader["CountryName"];
+                        }
+                    }
+                }
             }
             catch (Exception ex)
             {
                 isFound = false;
             }
-            finally
-            {
-                connection.Close();
-            }
 
             return isFound;
         }
-        /****************************************************************************************************************************************/
+
         public static bool GetCountryInfoByName(string CountryName, ref int ID)
         {
             bool isFound = false;
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
-            string query = "SELECT * FROM Countries WHERE CountryName = @CountryName";
-            SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.AddWithValue("@CountryName", CountryName);
+            string query = "SELECT CountryID FROM Countries WHERE CountryName = @CountryName";
+
             try
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.Read())
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    isFound = true;
-                    ID = (int)reader["CountryID"];
+                    command.Parameters.AddWithValue("@CountryName", CountryName);
+
+                    connection.Open();
+
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.Read())
+                        {
+                            isFound = true;
+                            ID = (int)reader["CountryID"];
+                        }
+                    }
                 }
-                else
-                {
-                    isFound = false;
-                }
-                reader.Close();
             }
             catch (Exception ex)
             {
                 isFound = false;
             }
-            finally
-            {
-                connection.Close();
-            }
 
             return isFound;
         }
 
-        /****************************************************************************************************************************************/
         public static DataTable GetAllCountries()
         {
             DataTable dt = new DataTable();
-            SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString);
             string query = "SELECT * FROM Countries order by CountryName";
-            SqlCommand command = new SqlCommand(query, connection);
+
             try
             {
-                connection.Open();
-                SqlDataReader reader = command.ExecuteReader();
-                if (reader.HasRows)
+                using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
+                using (SqlCommand command = new SqlCommand(query, connection))
                 {
-                    dt.Load(reader);
-                }
-                reader.Close();
-            }
+                    connection.Open();
 
+                    using (SqlDataReader reader = command.ExecuteReader())
+                    {
+                        if (reader.HasRows)
+                        {
+                            dt.Load(reader);
+                        }
+                    }
+                }
+            }
             catch (Exception ex)
             {
+                // Console.WriteLine("Error: " + ex.Message);
             }
-            finally
-            {
-                connection.Close();
-            }
+
             return dt;
         }
-        /****************************************************************************************************************************************/
-
     }
 }
