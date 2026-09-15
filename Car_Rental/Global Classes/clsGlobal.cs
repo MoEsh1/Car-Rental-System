@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Win32;
 
 namespace Car_Rental.Global_Classes
 {
@@ -19,6 +20,7 @@ namespace Car_Rental.Global_Classes
 
             try
             {
+
                 //this will get the current project directory folder.
                 string currentDirectory = System.IO.Directory.GetCurrentDirectory();
 
@@ -49,6 +51,31 @@ namespace Car_Rental.Global_Classes
             catch (Exception ex)
             {
                 MessageBox.Show($"An error occurred: {ex.Message}");
+                return false;
+            }
+
+        }
+        // to save username and passowrd into registry
+        public static bool RememberUsernameAndPasswordAtReg(string Username, string Password)
+        {
+            string KeyPath = @"HKEY_CURRENT_USER\SOFTWARE\CarRental";
+            string ValueName1 = "username";
+            string ValueData1 = Username;
+            string ValueName2 = "password";
+            string ValueData2 = Password;
+            try
+            {
+
+                Registry.SetValue(KeyPath, ValueName1, ValueData1, RegistryValueKind.String);
+                Registry.SetValue(KeyPath, ValueName2, ValueData2, RegistryValueKind.String);
+                //log
+                //MessageBox.Show($"Value {valueName} successfully written to the Registry.");
+                return true;
+            }
+            catch (Exception ex)
+            {
+                //log
+                //MessageBox.Show($"An error occurred: {ex.Message}");
                 return false;
             }
 
@@ -95,6 +122,49 @@ namespace Car_Rental.Global_Classes
                 return false;
             }
 
+        }
+        public static bool GetStoredCredentialFromReg(ref string Username, ref string Password)
+        {
+            //this will get the stored username and password and will return true if found and false if not found.
+
+            string KeyPath = @"HKEY_CURRENT_USER\SOFTWARE\CarRental";
+            string ValueName1 = "username";
+            string ValueName2 = "password";
+
+            try
+            {
+                // Read BOTH values first
+                string UsernameValue = Registry.GetValue(KeyPath, ValueName1, null) as string;
+                string PasswordValue = Registry.GetValue(KeyPath, ValueName2, null) as string;
+
+                // Check if BOTH were found successfully
+                if (UsernameValue != null && PasswordValue != null)
+                {
+                    Username = UsernameValue;
+                    Password = PasswordValue;
+                    return true; 
+                }
+                else
+                {
+                    
+                    if (UsernameValue == null)
+                    {
+                      //log  MessageBox.Show($"{ValueName1} not found in the Registry.");
+                    }
+
+                    if (PasswordValue == null)
+                    {
+                      //log  MessageBox.Show($"{ValueName2} not found in the Registry."); 
+                    }
+
+                    return false;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+                return false;
+            }
         }
     }
 }

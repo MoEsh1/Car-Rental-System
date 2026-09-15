@@ -31,13 +31,13 @@ namespace Car_Rental.Login
                 if (chkRememberMe.Checked)
                 {
                     //store username and password
-                    clsGlobal.RememberUsernameAndPassword(txtUserName.Text.Trim(), txtPassword.Text.Trim());
+                    clsGlobal.RememberUsernameAndPasswordAtReg(txtUserName.Text.Trim(), txtPassword.Text.Trim());
 
                 }
                 else
                 {
                     //store empty username and password
-                    clsGlobal.RememberUsernameAndPassword("", "");
+                    clsGlobal.RememberUsernameAndPasswordAtReg("", "");
 
                 }
 
@@ -80,7 +80,7 @@ namespace Car_Rental.Login
         {
             string UserName = "", Password = "";
 
-            if (clsGlobal.GetStoredCredential(ref UserName, ref Password))
+            if (clsGlobal.GetStoredCredentialFromReg(ref UserName, ref Password))
             {
                 txtUserName.Text = UserName;
                 txtPassword.Text = Password;
