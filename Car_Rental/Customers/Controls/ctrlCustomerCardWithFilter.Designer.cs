@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.ctrlCustomerCard1 = new Car_Rental.Controls.ctrlCustomerCard();
             this.gbFilters = new System.Windows.Forms.GroupBox();
             this.btnAddNewCustomer = new System.Windows.Forms.Button();
             this.btnFind = new System.Windows.Forms.Button();
@@ -37,20 +36,10 @@
             this.txtFilterValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
+            this.ctrlCustomerCard1 = new Car_Rental.Controls.ctrlCustomerCard();
             this.gbFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
             this.SuspendLayout();
-            // 
-            // ctrlCustomerCard1
-            // 
-            this.ctrlCustomerCard1.BackColor = System.Drawing.Color.OldLace;
-            this.ctrlCustomerCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ctrlCustomerCard1.Location = new System.Drawing.Point(12, 100);
-            this.ctrlCustomerCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.ctrlCustomerCard1.Name = "ctrlCustomerCard1";
-            this.ctrlCustomerCard1.Size = new System.Drawing.Size(661, 409);
-            this.ctrlCustomerCard1.TabIndex = 0;
-            this.ctrlCustomerCard1.Load += new System.EventHandler(this.ctrlCustomerCard1_Load);
             // 
             // gbFilters
             // 
@@ -97,6 +86,7 @@
             this.cbFilterBy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbFilterBy.FormattingEnabled = true;
             this.cbFilterBy.Items.AddRange(new object[] {
+            "None",
             "Customer ID",
             "Person ID",
             "Driver License No."});
@@ -131,6 +121,17 @@
             // errorProvider1
             // 
             this.errorProvider1.ContainerControl = this;
+            // 
+            // ctrlCustomerCard1
+            // 
+            this.ctrlCustomerCard1.BackColor = System.Drawing.Color.OldLace;
+            this.ctrlCustomerCard1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ctrlCustomerCard1.Location = new System.Drawing.Point(12, 100);
+            this.ctrlCustomerCard1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.ctrlCustomerCard1.Name = "ctrlCustomerCard1";
+            this.ctrlCustomerCard1.Size = new System.Drawing.Size(661, 409);
+            this.ctrlCustomerCard1.TabIndex = 0;
+            this.ctrlCustomerCard1.Load += new System.EventHandler(this.ctrlCustomerCard1_Load);
             // 
             // ctrlCustomerCardWithFilter
             // 

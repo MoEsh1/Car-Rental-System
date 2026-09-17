@@ -50,7 +50,7 @@ namespace Car_Rental.Controls
             if (_Customer == null)
             {
                 _ResetPersonInfo();
-                MessageBox.Show("No Customer with PersonID = " + _Customer.PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("No Customer with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
