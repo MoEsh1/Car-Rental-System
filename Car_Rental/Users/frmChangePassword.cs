@@ -1,5 +1,6 @@
 ﻿using BuisnessLayer;
 using Car_Rental.Global_Classes;
+using Car_Rental_BuisnessLayer.Global_Classes;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -67,9 +68,8 @@ namespace Car_Rental.Users
                 return;
             }
 
-            _User.Password = txtNewPassword.Text;
-
-            if (_User.Save())
+            // Call the dedicated ChangePassword method in the BLL
+            if (_User.ChangePassword(txtNewPassword.Text.Trim()))
             {
                 MessageBox.Show("Password Changed Successfully.",
                    "Saved.", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -77,7 +77,7 @@ namespace Car_Rental.Users
             }
             else
             {
-                MessageBox.Show("An Erro Occured, Password did not change.",
+                MessageBox.Show("An Error Occurred, Password did not change.",
                    "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
@@ -99,9 +99,10 @@ namespace Car_Rental.Users
             {
                 errorProvider1.SetError(txtCurrentPassword, null);
             }
-            ;
 
-            if (_User.Password != txtCurrentPassword.Text.Trim())
+            string hashedInput = clsHashing.ComputeHash(txtCurrentPassword.Text.Trim());
+
+            if (_User.Password != hashedInput)
             {
                 e.Cancel = true;
                 errorProvider1.SetError(txtCurrentPassword, "Current password is wrong!");

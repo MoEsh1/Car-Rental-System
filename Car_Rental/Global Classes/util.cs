@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;  
 using System.Runtime.InteropServices;
-
+using static Car_Rental.Global_Classes.clsEventLogger;
 namespace Car_Rental.Global_Classes
 {
 
@@ -55,7 +55,7 @@ namespace Car_Rental.Global_Classes
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Error creating folder: " + ex.Message);
+                    LogError("Error creating folder: " + ex.Message);
                     return false;
                 }
             }
@@ -95,6 +95,7 @@ namespace Car_Rental.Global_Classes
             catch (IOException iox)
             {
                 MessageBox.Show(iox.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LogWarning(iox.Message);
                 return false;
             }
 

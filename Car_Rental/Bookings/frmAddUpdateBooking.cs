@@ -10,7 +10,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using static Car_Rental.Global_Classes.clsEventLogger;
 namespace Car_Rental.Bookings
 {
     public partial class frmAddUpdateBooking : Form
@@ -78,6 +78,7 @@ namespace Car_Rental.Bookings
             if ( _Booking == null )
             {
                 MessageBox.Show("No Booking With ID" + _BookingID, "Booking Not Found", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                LogError("No Booking With ID" + _BookingID);
                 this.Close();
 
                 return;
@@ -217,7 +218,7 @@ namespace Car_Rental.Bookings
                 this.Text = lblTitle.Text;
 
                 MessageBox.Show("Data Saved Successfully.", "Saved", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                LogInfo("Add/update booking: Data Saved Successfully");
  
                 DataBack?.Invoke(this, _Booking.BookingID);
             }

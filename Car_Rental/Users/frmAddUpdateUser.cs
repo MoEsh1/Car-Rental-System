@@ -60,6 +60,8 @@ namespace Car_Rental.Users
                 tpLoginInfo.Enabled = false;
 
                 ctrlPersonCardWithFilter1.FilterFocus();
+                txtPassword.Enabled = true;
+                txtConfirmPassword.Enabled = true;
             }
             else
             {
@@ -68,7 +70,8 @@ namespace Car_Rental.Users
 
                 tpLoginInfo.Enabled = true;
                 btnSave.Enabled = true;
-
+                txtPassword.Enabled = false;
+                txtConfirmPassword.Enabled = false;
             }
 
             txtUserName.Text = "";
@@ -95,8 +98,8 @@ namespace Car_Rental.Users
             //the following code will not be executed if the person was not found
             lblUserID.Text = _User.UserID.ToString();
             txtUserName.Text = _User.UserName;
-            txtPassword.Text = _User.Password;
-            txtConfirmPassword.Text = _User.Password;
+            txtPassword.Text = "********";
+            txtConfirmPassword.Text = "********";
             chkIsActive.Checked = _User.IsActive;
             ctrlPersonCardWithFilter1.LoadPersonInfo(_User.PersonID);
         }
@@ -163,8 +166,11 @@ namespace Car_Rental.Users
 
             _User.PersonID = ctrlPersonCardWithFilter1.PersonID;
             _User.UserName = txtUserName.Text.Trim();
-            _User.Password = txtPassword.Text.Trim();
             _User.IsActive = chkIsActive.Checked;
+            if(_Mode == enMode.AddNew)
+            {
+                _User.Password = txtPassword.Text.Trim();
+            }
 
 
             if (_User.Save())

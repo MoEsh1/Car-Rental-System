@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Car_Rental_DataAccess;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
@@ -123,7 +124,6 @@ namespace DataAccess
         public static int AddNewUser(int PersonID, string UserName, string Password, bool IsActive)
         {
             int UserID = -1;
-
             string query = @"INSERT INTO Users (PersonID,UserName,Password,IsActive)
                              VALUES (@PersonID, @UserName,@Password,@IsActive);
                              SELECT SCOPE_IDENTITY();";
@@ -158,7 +158,6 @@ namespace DataAccess
         public static bool UpdateUser(int UserID, int PersonID, string UserName, string Password, bool IsActive)
         {
             int rowsAffected = 0;
-
             string query = @"Update Users  
                              set PersonID = @PersonID,
                                  UserName = @UserName,

@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using static Car_Rental.Global_Classes.clsEventLogger;
 namespace Car_Rental.Login
 {
     public partial class frmLogin : Form
@@ -47,6 +47,7 @@ namespace Car_Rental.Login
 
                     txtUserName.Focus();
                     MessageBox.Show("Your accound is not Active, Contact Admin.", "In Active Account", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    LogError("Your accound is not Active, Contact Admin.");
                     return;
                 }
 
@@ -67,6 +68,7 @@ namespace Car_Rental.Login
             {
                 txtUserName.Focus();
                 MessageBox.Show("Invalid Username/Password.", "Wrong Credintials", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LogError("Invalid Username/Password.");
             }
 
         }

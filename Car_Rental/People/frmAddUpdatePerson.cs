@@ -13,7 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static BuisnessLayer.clsPerson;
-
+using static Car_Rental.Global_Classes.clsEventLogger;
 namespace Car_Rental.People
 {
     public partial class frmAddUpdatePerson : Form

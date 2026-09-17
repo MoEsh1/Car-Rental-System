@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Win32;
 
+using static Car_Rental.Global_Classes.clsEventLogger;
 namespace Car_Rental.Global_Classes
 {
 
@@ -50,7 +51,7 @@ namespace Car_Rental.Global_Classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                LogError($"An error occurred: {ex.Message}");
                 return false;
             }
 
@@ -68,14 +69,13 @@ namespace Car_Rental.Global_Classes
 
                 Registry.SetValue(KeyPath, ValueName1, ValueData1, RegistryValueKind.String);
                 Registry.SetValue(KeyPath, ValueName2, ValueData2, RegistryValueKind.String);
-                //log
-                //MessageBox.Show($"Value {valueName} successfully written to the Registry.");
+                
+                LogInfo($"Value {ValueName1} = {ValueData1} successfully written to the Registry.");
                 return true;
             }
             catch (Exception ex)
             {
-                //log
-                //MessageBox.Show($"An error occurred: {ex.Message}");
+                LogError($"An error occurred: {ex.Message}");
                 return false;
             }
 
@@ -118,7 +118,7 @@ namespace Car_Rental.Global_Classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                LogError($"An error occurred: {ex.Message}");
                 return false;
             }
 
@@ -149,12 +149,12 @@ namespace Car_Rental.Global_Classes
                     
                     if (UsernameValue == null)
                     {
-                      //log  MessageBox.Show($"{ValueName1} not found in the Registry.");
+                      LogError($"{ValueName1} not found in the Registry.");
                     }
 
                     if (PasswordValue == null)
                     {
-                      //log  MessageBox.Show($"{ValueName2} not found in the Registry."); 
+                      LogError($"{ValueName2} not found in the Registry."); 
                     }
 
                     return false;
@@ -162,7 +162,7 @@ namespace Car_Rental.Global_Classes
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"An error occurred: {ex.Message}");
+                LogError($"An error occurred: {ex.Message}");
                 return false;
             }
         }

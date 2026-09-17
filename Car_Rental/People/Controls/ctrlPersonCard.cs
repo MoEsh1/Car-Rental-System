@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Car_Rental.People;
-
+using static Car_Rental.Global_Classes.clsEventLogger;
 namespace Car_Rental.Controls
 {
 
@@ -43,6 +43,7 @@ namespace Car_Rental.Controls
             {
                 ResetPersonInfo();
                 MessageBox.Show("No Person with PersonID = " + PersonID.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LogError("No Person with PersonID = " + PersonID.ToString());
                 return;
             }
 
@@ -57,6 +58,7 @@ namespace Car_Rental.Controls
             {
                 ResetPersonInfo();
                 MessageBox.Show("No Person with National No. = " + NationalNo.ToString(), "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                LogError("No Person with National No. = " + NationalNo.ToString());
                 return;
             }
 

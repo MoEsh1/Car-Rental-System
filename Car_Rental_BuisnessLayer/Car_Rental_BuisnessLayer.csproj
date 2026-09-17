@@ -48,6 +48,7 @@
     <Compile Include="clsReturn.cs" />
     <Compile Include="clsUser.cs" />
     <Compile Include="clsVehicle.cs" />
+    <Compile Include="Global Classes\clsHasing.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

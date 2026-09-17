@@ -1,4 +1,5 @@
-﻿using DataAccess;
+﻿using Car_Rental_BuisnessLayer.Global_Classes;
+using DataAccess;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -46,13 +47,24 @@ namespace BuisnessLayer
         /****************************************************************************************************************************************/
         private bool _AddNewUser()
         {
-            this.UserID = clsUserData.AddNewUser(this.PersonID, this.UserName, this.Password, this.IsActive);
+            string HashedPassword = clsHashing.ComputeHash(this.Password);
+
+            this.UserID = clsUserData.AddNewUser(this.PersonID, this.UserName, HashedPassword, this.IsActive);
             return (this.UserID != -1);
         }
         /****************************************************************************************************************************************/
         private bool _UpdateUser()
         {
             return clsUserData.UpdateUser(this.UserID, this.PersonID, this.UserName, this.Password, this.IsActive);
+        }
+        /****************************************************************************************************************************************/
+        public bool ChangePassword(string NewPlainTextPassword)
+        {
+            // Hash the new password
+            this.Password = clsHashing.ComputeHash(NewPlainTextPassword);
+
+            // Save the update to the database
+            return _UpdateUser();
         }
 
         /****************************************************************************************************************************************/
@@ -75,7 +87,7 @@ namespace BuisnessLayer
             bool IsActive = false;
             bool IsFound = clsUserData.GetUserInfoByPersonID(PersonID, ref UserID, ref UserName, ref Password, ref IsActive);
             if (IsFound)
-                return new clsUser(UserID, UserID, UserName, Password, IsActive);
+                return new clsUser(UserID, PersonID, UserName, Password, IsActive);
             else
                 return null;
         }
@@ -86,12 +98,13 @@ namespace BuisnessLayer
             int PersonID = -1;
 
             bool IsActive = false;
+            string HashedPassword = clsHashing.ComputeHash(Password);
 
             bool IsFound = clsUserData.GetUserInfoByUsernameAndPassword
-                                (UserName, Password, ref UserID, ref PersonID, ref IsActive);
+                                (UserName, HashedPassword, ref UserID, ref PersonID, ref IsActive);
 
             if (IsFound)
-                return new clsUser(UserID, PersonID, UserName, Password, IsActive);
+                return new clsUser(UserID, PersonID, UserName, HashedPassword, IsActive);
             else
                 return null;
         }
