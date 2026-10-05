@@ -17,7 +17,7 @@ The Car Rental System is a robust desktop application designed to manage the cor
 *   **Customer & User Administration:** Multi-layered identity management separating base People profiles from Customers and System Users, ensuring no duplicate National ID entries.
 *   **Booking Operations:** Manages vehicle reservations, automatically calculating initial totals based on rental days and daily rates, while enforcing strict date logic and preventing double-booking of unavailable vehicles.
 *   **Return Module & Late Fees:** Processes completed rentals, calculates exact consumed days, applies late fees if necessary, updates total vehicle mileage, and automatically releases vehicles back to the available fleet.
-*   **System Security:** Implements SHA-256 password hashing for secure database storage and utilizes Windows DPAPI encryption for local registry "Remember Me" credentials.
+*   **System Security:** Implements SHA-256 password hashing for secure database storage and save at local registry "Remember Me" credentials for test purpose only.
 
 ---
 
@@ -45,6 +45,12 @@ The Car Rental System is a robust desktop application designed to manage the cor
 
 ---
 
+## 🗄️️ Database Schema
+> A visual representation of the highly relational database structure, including all core entities and constraints.
+![Database Schema](Images/database-schema.png)
+
+---
+
 ## 🛠️ Tech Stack & Tools
 *   **Language:** C#
 *   **Framework:** .NET Framework (Windows Forms)
@@ -59,11 +65,11 @@ The Car Rental System is a robust desktop application designed to manage the cor
 
 1. **Database Setup:** 
    * Open SQL Server Management Studio (SSMS).
-   * Execute the `.sql` script located in the `Database` folder to generate the schema and populate the essential lookup data (Countries, Sample Vehicles, default Admin user).
+   * Execute the `CarRentalDB_Setup.sql` script located in the `Database` folder to generate the schema, views, and populate the essential lookup data (Countries, Sample Vehicles, default Admin user).
 2. **Application Configuration:**
    * Open the solution (`.sln`) in Visual Studio.
    * Open the `clsDataAccessSettings` file within the Data Access Layer project.
    * Update the `ConnectionString` to match your local SQL Server instance name.
 3. **Run:** 
    * Build the solution and start the application. 
-   * Log in using `admin` for the username and `123` for the password.
+   * Log in using `admin` for the username and `1234` for the password.
