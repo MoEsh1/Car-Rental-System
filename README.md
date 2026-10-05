@@ -24,7 +24,7 @@ The Car Rental System is a robust desktop application designed to manage the cor
 ## 📸 Application Screenshots
 
 ### Authentication & Dashboard
-> Login system with DPAPI encrypted credential saving and main navigation hub.
+> Login system credential saving and main navigation hub.
 ![Login Screen](Images/Login.png)
 ![Main Dashboard](Images/Main.png)
 
@@ -45,9 +45,9 @@ The Car Rental System is a robust desktop application designed to manage the cor
 
 ---
 
-## 🗄️️ Database Schema
+## 🗄️️ Database Diagram
 > A visual representation of the highly relational database structure, including all core entities and constraints.
-![Database Schema](Images/database-schema.png)
+![Database Diagram](Images/db-diagram.png)
 
 ---
 
@@ -57,7 +57,7 @@ The Car Rental System is a robust desktop application designed to manage the cor
 *   **Database:** Microsoft SQL Server
 *   **Data Access:** ADO.NET
 *   **Architecture:** 3-Tier Architecture (UI, Business, Data Access) + Object-Oriented Programming (OOP) principles.
-*   **Security:** SHA-256 (Hashing) & Windows DPAPI (Encryption).
+*   **Security:** SHA-256 (Hashing).
 
 ---
 
