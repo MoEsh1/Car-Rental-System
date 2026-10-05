@@ -40,7 +40,8 @@ The Car Rental System is a robust desktop application designed to manage the cor
 
 ### Returns & Final Settlements
 > Processing vehicle returns, calculating consumed days, and updating fleet mileage.
-![Process Return](Images/ProcessReturn.png)
+![Show Return Details](Images/ShowRetrunDetails.png)
+
 ![List Returns](Images/ListReturns.png)
 
 ---
@@ -51,7 +52,7 @@ The Car Rental System is a robust desktop application designed to manage the cor
 *   **Database:** Microsoft SQL Server
 *   **Data Access:** ADO.NET
 *   **Architecture:** 3-Tier Architecture (UI, Business, Data Access) + Object-Oriented Programming (OOP) principles.
-*   **Security:** SHA-256 (Hashing) & Windows DPAPI (Encryption).
+*   **Security:** SHA-256 (Hashing).
 
 ---
 
