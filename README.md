@@ -40,7 +40,7 @@ The Car Rental System is a robust desktop application designed to manage the cor
 
 ### Returns & Final Settlements
 > Processing vehicle returns, calculating consumed days, and updating fleet mileage.
-![Process Return](Images/ProcessReturn.png)
+![Show Retrun Details](Images/ShowRetrunDetails.png)
 ![List Returns](Images/ListReturns.png)
 
 ---
