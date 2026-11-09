@@ -3,26 +3,23 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Car_Rental_DataAccess
 {
     public class clsReturnData
     {
+        /*******************************************************************************************/
         public static bool GetReturnInfoByReturnID(int ReturnID, ref int BookingID, ref DateTime ActualReturnDate,
                                   ref int MileageAdded, ref int ConsumedDays, ref decimal FinalTotal)
         {
             bool isFound = false;
-            string query = @"SELECT BookingID, ActualReturnDate, MileageAdded, ConsumedDays, FinalTotal 
-                             FROM Returns WHERE ReturnID = @ReturnID";
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand("SP_GetReturnInfoByReturnID", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@ReturnID", ReturnID);
 
                     connection.Open();
@@ -48,19 +45,18 @@ namespace Car_Rental_DataAccess
 
             return isFound;
         }
-
+        /*******************************************************************************************/
         public static bool GetReturnInfoByBookingID(int BookingID, ref int ReturnID, ref DateTime ActualReturnDate,
                                   ref int MileageAdded, ref int ConsumedDays, ref decimal FinalTotal)
         {
             bool isFound = false;
-            string query = @"SELECT ReturnID, ActualReturnDate, MileageAdded, ConsumedDays, FinalTotal 
-                             FROM Returns WHERE BookingID = @BookingID";
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand("SP_GetReturnInfoByBookingID", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@BookingID", BookingID);
 
                     connection.Open();
@@ -86,34 +82,34 @@ namespace Car_Rental_DataAccess
 
             return isFound;
         }
-
+        /*******************************************************************************************/
         public static int AddNewReturns(int BookingID, DateTime ActualReturnDate,
                                    int MileageAdded, int ConsumedDays, decimal FinalTotal)
         {
-            int ReturnID = -1; 
-
-            string query = @"INSERT INTO Returns (BookingID, ActualReturnDate, MileageAdded, ConsumedDays, FinalTotal)
-                             VALUES (@BookingID, @ActualReturnDate, @MileageAdded, @ConsumedDays, @FinalTotal);
-                             SELECT SCOPE_IDENTITY();";
+            int ReturnID = -1;
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand("SP_AddNewReturn", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@BookingID", BookingID);
                     command.Parameters.AddWithValue("@ActualReturnDate", ActualReturnDate);
                     command.Parameters.AddWithValue("@MileageAdded", MileageAdded);
                     command.Parameters.AddWithValue("@ConsumedDays", ConsumedDays);
                     command.Parameters.AddWithValue("@FinalTotal", FinalTotal);
 
-                    connection.Open();
-                    object result = command.ExecuteScalar();
-
-                    if (result != null && int.TryParse(result.ToString(), out int insertedID))
+                    SqlParameter outputIdParam = new SqlParameter("@NewReturnID", SqlDbType.Int)
                     {
-                        ReturnID = insertedID;
-                    }
+                        Direction = ParameterDirection.Output
+                    };
+                    command.Parameters.Add(outputIdParam);
+
+                    connection.Open();
+                    command.ExecuteNonQuery();
+
+                    ReturnID = (int)command.Parameters["@NewReturnID"].Value;
                 }
             }
             catch (Exception ex)
@@ -123,25 +119,18 @@ namespace Car_Rental_DataAccess
 
             return ReturnID;
         }
-
+        /*******************************************************************************************/
         public static bool UpdateReturn(int ReturnID, int BookingID, DateTime ActualReturnDate,
                                    int MileageAdded, int ConsumedDays, decimal FinalTotal)
         {
             int rowsAffected = 0;
 
-            string query = @"Update Returns 
-                             set BookingID = @BookingID,
-                                 ActualReturnDate = @ActualReturnDate,
-                                 MileageAdded = @MileageAdded,
-                                 ConsumedDays = @ConsumedDays,
-                                 FinalTotal = @FinalTotal
-                             where ReturnID = @ReturnID";
-
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand("SP_UpdateReturn", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@ReturnID", ReturnID);
                     command.Parameters.AddWithValue("@BookingID", BookingID);
                     command.Parameters.AddWithValue("@ActualReturnDate", ActualReturnDate);
@@ -160,17 +149,17 @@ namespace Car_Rental_DataAccess
 
             return (rowsAffected > 0);
         }
-
+        /*******************************************************************************************/
         public static bool DeleteReturn(int ReturnID)
         {
             int rowsAffected = 0;
-            string query = @"Delete From Returns where ReturnID = @ReturnID";
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand("SP_DeleteReturn", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@ReturnID", ReturnID);
 
                     connection.Open();
@@ -184,17 +173,17 @@ namespace Car_Rental_DataAccess
 
             return (rowsAffected > 0);
         }
-
+        /*******************************************************************************************/
         public static DataTable GetAllReturns()
         {
             DataTable dt = new DataTable();
-            string query = @"SELECT * From Returns_View";
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand("SP_GetAllReturns", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     connection.Open();
 
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -213,25 +202,24 @@ namespace Car_Rental_DataAccess
 
             return dt;
         }
+        /*******************************************************************************************/
 
         public static bool IsReturnExist(int ReturnID)
         {
             bool isFound = false;
-            string query = "SELECT Found=1 FROM Returns WHERE ReturnID = @ReturnID";
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand("SP_IsReturnExist", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@ReturnID", ReturnID);
 
                     connection.Open();
 
-                    using (SqlDataReader reader = command.ExecuteReader())
-                    {
-                        isFound = reader.HasRows;
-                    }
+                    int result = Convert.ToInt32(command.ExecuteScalar());
+                    isFound = (result == 1);
                 }
             }
             catch (Exception ex)
@@ -241,5 +229,6 @@ namespace Car_Rental_DataAccess
 
             return isFound;
         }
+        /*******************************************************************************************/
     }
 }

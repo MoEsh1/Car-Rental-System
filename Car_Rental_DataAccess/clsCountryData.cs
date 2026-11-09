@@ -2,24 +2,22 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace DataAccess
 {
     public class clsCountryData
     {
+        /*******************************************************************************************/
         public static bool GetCountryInfoByID(int ID, ref string CountryName)
         {
             bool isFound = false;
-            string query = "SELECT CountryName FROM Countries WHERE CountryID = @CountryID";
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand("SP_GetCountryInfoByID", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@CountryID", ID);
 
                     connection.Open();
@@ -41,17 +39,18 @@ namespace DataAccess
 
             return isFound;
         }
+        /*******************************************************************************************/
 
         public static bool GetCountryInfoByName(string CountryName, ref int ID)
         {
             bool isFound = false;
-            string query = "SELECT CountryID FROM Countries WHERE CountryName = @CountryName";
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand("SP_GetCountryInfoByName", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     command.Parameters.AddWithValue("@CountryName", CountryName);
 
                     connection.Open();
@@ -73,17 +72,17 @@ namespace DataAccess
 
             return isFound;
         }
-
+        /*******************************************************************************************/
         public static DataTable GetAllCountries()
         {
             DataTable dt = new DataTable();
-            string query = "SELECT * FROM Countries order by CountryName";
 
             try
             {
                 using (SqlConnection connection = new SqlConnection(clsDataAccessSettings.ConnectionString))
-                using (SqlCommand command = new SqlCommand(query, connection))
+                using (SqlCommand command = new SqlCommand("SP_GetAllCountries", connection))
                 {
+                    command.CommandType = CommandType.StoredProcedure;
                     connection.Open();
 
                     using (SqlDataReader reader = command.ExecuteReader())
@@ -102,5 +101,6 @@ namespace DataAccess
 
             return dt;
         }
+        /*******************************************************************************************/
     }
 }

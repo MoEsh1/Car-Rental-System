@@ -61,25 +61,28 @@ namespace Car_Rental.People
                 dgvPeople.Columns[1].HeaderText = "National No.";
                 dgvPeople.Columns[1].Width = 70;
 
-                dgvPeople.Columns[2].HeaderText = "Last Name";
+                dgvPeople.Columns[2].HeaderText = "First Name";
                 dgvPeople.Columns[2].Width = 100;
 
-                dgvPeople.Columns[3].HeaderText = "Gender";
+                dgvPeople.Columns[3].HeaderText = "Last Name";
                 dgvPeople.Columns[3].Width = 100;
 
-                dgvPeople.Columns[4].HeaderText = "Date Of Birth";
-                dgvPeople.Columns[4].Width = 120;
+                dgvPeople.Columns[4].HeaderText = "Gender";
+                dgvPeople.Columns[4].Width = 100;
 
-                dgvPeople.Columns[5].HeaderText = "Nationality";
-                dgvPeople.Columns[5].Width = 100;
+                dgvPeople.Columns[5].HeaderText = "Date Of Birth";
+                dgvPeople.Columns[5].Width = 120;
 
-
-                dgvPeople.Columns[6].HeaderText = "Phone";
+                dgvPeople.Columns[6].HeaderText = "Nationality";
                 dgvPeople.Columns[6].Width = 100;
 
 
-                dgvPeople.Columns[7].HeaderText = "Email";
-                dgvPeople.Columns[7].Width = 170;
+                dgvPeople.Columns[7].HeaderText = "Phone";
+                dgvPeople.Columns[7].Width = 100;
+
+
+                dgvPeople.Columns[8].HeaderText = "Email";
+                dgvPeople.Columns[8].Width = 170;
             }
         }
 

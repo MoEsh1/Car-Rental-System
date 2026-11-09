@@ -80,7 +80,7 @@ namespace Car_Rental.Vehicles
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            showDetailsToolStripMenuItem_Click(sender, e);
+            btnAddVehicle.PerformClick();
 
         }
 
